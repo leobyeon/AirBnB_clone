@@ -27,7 +27,8 @@ class BaseModel:
 
     def __str__(self):
         """func __str__ - no args"""
-        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+            type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """func save - no args"""
