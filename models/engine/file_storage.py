@@ -3,6 +3,7 @@
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -12,22 +13,27 @@ class FileStorage:
     store all objects by <class name>.id"""
     __file_path = "file.json"
     __objects = {}
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User
+        }
 
     def all(self):
         """func all - no args - returns the dictionary __objects"""
-        return self.__class__.__objects
+        return self.__objects
 
     def new(self, obj):
         """func new - obj - sets in __objects the obj with key
         <obj class name>.id"""
-        self.__class__.__objects[obj.__class__.__name__ + "." + str(
-            obj.id)] = obj
+        if obj:
+            self.__objects[obj.__class__.__name__ + "." + str(
+                obj.id)] = obj
 
     def save(self):
         """func save - no args - serializes __objects to the JSON file
         (path: __file_path)"""
         d = {}
-        for k, v in self.__class__.__objects.items():
+        for k, v in self.__objects.items():
             d[k] = v.to_dict()
         with open(self.__file_path, mode='w', encoding='utf-8') as a_file:
             a_file.write(json.dumps(d))
@@ -38,4 +44,4 @@ class FileStorage:
             with open(self.__file_path, mode="r", encoding='utf-8') as a_file:
                 d = json.loads(a_file.read())
             for k, v in d.items():
-                self.__class__.__objects[k] = BaseModel(**v)
+                self.__objects[k] = self.classes[v["__class__"]](**v)
