@@ -124,10 +124,13 @@ class HBNBCommand(cmd.Cmd):
                 k = args[0] + "." + args[1]
                 ob = storage.all()
                 if k in ob:
-                    ob.__setattr__(args[2], type(
-                        ob.__getattr__(args[2]))(args[3]))
-                    ob[k].update_at = datetime.now()
-                    storage.save()
+                    obj = ob.get(k)
+                    try:
+                        setattr(obj, args[2], type(getattr(obj, args[2]))(args[3]))
+                        storage.save()
+                    except AttributeError:
+                        setattr(obj, args[2], args[3])
+                        storage.save()
                 else:
                     print("** no instance found **")
 
