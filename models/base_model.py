@@ -46,13 +46,14 @@ class BaseModel:
         """func to_dict - no args - returns a dictionary containing all
         keys/values of __dict__ of the instance, using self.__dict__
         key __class__ is added with the class name of the object
-        created_at and updated_at must be converted to string object
+        created_at and updated_at must be converted to t(str) object
         in ISO format - first piece of the serialization/deserialization
-        process:create a dictionary representation t(str) of BaseModel"""
+        process: create a t(dict) representation of BaseModel"""
         d = self.__dict__
+        g = {}
         d["__class__"] = self.__class__.__name__
         for k, v in d.items():
-            d[k] = v
+            g[k] = v
             if k == "created_at" or k == "updated_at":
-                d[k] = v.isoformat()
-        return (d)
+                g[k] = v.isoformat()
+        return (g)
