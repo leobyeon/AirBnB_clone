@@ -4,7 +4,11 @@ import json
 import os.path
 from models.base_model import BaseModel
 from models.user import User
-
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
 
 class FileStorage:
     """Class FileStorage - serializes instances to a JSON file and deserializes
@@ -15,7 +19,12 @@ class FileStorage:
     __objects = {}
     classes = {
         "BaseModel": BaseModel,
-        "User": User
+        "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
         }
 
     def all(self):
