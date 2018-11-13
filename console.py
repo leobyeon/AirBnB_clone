@@ -31,9 +31,11 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     do_EOF = do_quit
+
     def emptyline(self):
         """empty line + ENTER shouldn’t execute anything"""
         pass
+
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves it (to the JSON file)"""
         if self.classes[args]:
@@ -42,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
             ob.save()
         elif not args:
             print("** class name missing **")
-        elif  args not in self.classes:
+        elif args not in self.classes:
             print("** class doesn't exist **")
 
     def do_show(self, arg):
@@ -58,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 2:
             k = args[0] + "." + args[1]
             ob = storage.all()
-            if  ob.get(k):
+            if ob.get(k):
                 print(ob[k])
             else:
                 print("** no instance found **")
@@ -67,6 +69,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id (save the
         change into the JSON file)"""
         args = arg.split()
+
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -74,13 +77,14 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         elif len(args) == 2:
-            k = "BaseModel"+ "." + args[1]
+            k = "BaseModel" + "." + args[1]
             ob = storage.all()
             if ob.get(k):
                 del ob[k]
                 storage.save()
             else:
                 print("** no instance found **")
+
     def do_all(self, arg):
         """func do_all - arg - Prints all string representation of all
          instances based or not on the class name"""
@@ -107,13 +111,12 @@ class HBNBCommand(cmd.Cmd):
                 k = args[0] + "." + args[1]
                 ob = storage.all().get(k)
                 if k in ob:
-                    ob.__setattr__(args[2], type(ob.__getattr__(args[2]))(args[3]))
+                    ob.__setattr__(args[2], type(
+                        ob.__getattr__(args[2]))(args[3]))
                     ob[k].update_at = datetime.now()
                     storage.save()
                 else:
                     print("** no instance found **")
-            
-            
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
