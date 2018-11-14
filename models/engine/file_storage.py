@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Mod file_storage.py - class FileStorage - func all, new, save, reload"""
 import json
-import os.path
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -42,16 +41,21 @@ class FileStorage:
     def save(self):
         """func save - no args - serializes __objects to the JSON file
         (path: __file_path)"""
-        d = {}
-        for k, v in self.__objects.items():
-            d[k] = v.to_dict()
-        with open(self.__file_path, mode='w', encoding='utf-8') as a_file:
-            a_file.write(json.dumps(d))
+        try:
+            d = {}
+            for k, v in self.__objects.items():
+                d[k] = v.to_dict()
+            with open(self.__file_path, mode='w', encoding='utf-8') as a_file:
+                a_file.write(json.dumps(d))
+        except FileNotFoundError:
+            pass
 
     def reload(self):
         """func reload - no args - deserializes the JSON file to __objects"""
-        if os.path.isfile(self.__file_path):
+        try:
             with open(self.__file_path, mode="r", encoding='utf-8') as a_file:
                 d = json.loads(a_file.read())
             for k, v in d.items():
                 self.__objects[k] = self.classes[v["__class__"]](**v)
+        except FileNotFoundError:
+            pass
