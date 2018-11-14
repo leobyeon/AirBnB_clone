@@ -10,7 +10,6 @@ import pep8
 from console import HBNBCommand
 
 
-
 class TestCity(unittest.TestCase):
     """Tests for class BaseModel"""
     def setUp(self):
