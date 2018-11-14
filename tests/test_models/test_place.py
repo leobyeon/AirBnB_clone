@@ -4,9 +4,12 @@ import unittest
 from models.base_model import BaseModel
 from models.place import Place
 from unittest.mock import create_autospec
-import sys, os, pep8
+import sys
+import os
+import pep8
 from console import HBNBCommand
 import tests
+
 
 class TestPlace(unittest.TestCase):
     """Tests for class BaseModel"""
@@ -29,12 +32,13 @@ class TestPlace(unittest.TestCase):
         self.my_model2.number = 19
         self.mock_stdin = create_autospec(sys.stdin)
         self.mock_stdout = create_autospec(sys.stdout)
+
     def test_place(self):
         """test for review"""
         self.assertEqual(self.my_model1.city_id, "SF")
         self.assertEqual(self.my_model1.user_id, "Me")
         self.assertEqual(self.my_model1.name, "MySelf")
-        self.assertEqual(self.my_model1.description, "Big") 
+        self.assertEqual(self.my_model1.description, "Big")
         self.assertEqual(self.my_model1.number_rooms, 2)
         self.assertEqual(self.my_model1.number_bathrooms, 2)
         self.assertEqual(self.my_model1.max_guest, 2)

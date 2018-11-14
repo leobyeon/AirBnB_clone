@@ -4,9 +4,12 @@ import unittest
 from models.base_model import BaseModel
 from models.state import State
 from unittest.mock import create_autospec
-import sys, os, pep8
+import sys
+import os
+import pep8
 from console import HBNBCommand
 import tests
+
 
 class TestState(unittest.TestCase):
     """Tests for class BaseModel"""

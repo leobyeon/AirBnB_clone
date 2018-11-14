@@ -3,10 +3,13 @@
 import unittest
 from models.base_model import BaseModel
 from models.amenity import Amenity
-import sys, os, pep8
+import sys
+import os
+import pep8
 from unittest.mock import create_autospec
 from console import HBNBCommand
 import tests
+
 
 class TestAmenity(unittest.TestCase):
     """Tests for class BaseModel"""
@@ -20,6 +23,7 @@ class TestAmenity(unittest.TestCase):
         self.my_model2.number = 19
         self.mock_stdin = create_autospec(sys.stdin)
         self.mock_stdout = create_autospec(sys.stdout)
+
     def test_amenity(self):
         """test for review"""
         self.assertEqual(self.my_model1.name, "hello")

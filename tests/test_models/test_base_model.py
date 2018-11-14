@@ -3,10 +3,13 @@
 import unittest
 from models.base_model import BaseModel
 from unittest.mock import create_autospec
-import sys, os, pep8
+import sys
+import os
+import pep8
 from console import HBNBCommand
 from models import storage
 import tests
+
 
 class TestBaseModel(unittest.TestCase):
     """Tests for class BaseModel"""
@@ -28,8 +31,8 @@ class TestBaseModel(unittest.TestCase):
         """:return: last 'n' output lines"""
         if nr is None:
             return self.mock_stdout.write.call_args[0][0]
-        return "".join(map(lambda c: c[0][0],
-             self.mock_stdout.write.call_args_list[-nr:]))
+        return "".join(map(
+            lambda c: c[0][0], self.mock_stdout.write.call_args_list[-nr:]))
 
     def tearDown(self):
         """tear down test set up"""
@@ -52,6 +55,7 @@ class TestBaseModel(unittest.TestCase):
     def test_str(self):
         """test __srt__"""
         pass
+
     def test_save(self):
         """test save"""
         pass
@@ -59,6 +63,3 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """test to_dict"""
         pass
-
-    
-        

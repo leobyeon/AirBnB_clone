@@ -4,7 +4,9 @@ import unittest
 from models.base_model import BaseModel
 from models.review import Review
 from unittest.mock import create_autospec
-import sys, os, pep8
+import sys
+import os
+import pep8
 from console import HBNBCommand
 import tests
 
