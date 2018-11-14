@@ -101,19 +101,19 @@ class HBNBCommand(cmd.Cmd):
         """
         a = storage.all()
         a_list = []
-        if not arg:
-            for v in a.values():
-                a_list.append(str(v))
-            print(a_list)
-        else:
+        if arg:
             if arg in self.classes:
                 for k, v in a.items():
                     splitkey = k.split(".")
                     if splitkey[0] == arg:
                         a_list.append(str(v))
-                print(a_list)
             else:
                 print("** class doesn't exist **")
+        else: 
+            for v in a.values():
+                a_list.append(str(v))
+
+        print(a_list)
 
     def do_update(self, arg):
         """
@@ -148,6 +148,31 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
                 else:
                     print("** no instance found **")
+
+    def default(self, arg):
+        """
+        Method called on an input line when
+        the command prefix is not recognized
+        """
+        count = 0
+        args = arg.split(".")
+        if len(args) > 1:
+            cmds = args[1].split("(")
+            if cmds[0] == "all":
+                self.do_all(args[0])
+            elif cmds[0] == "count":
+                objs = storage.all()
+                for k, v in objs.items():
+                    if k.split(".")[0] == args[0]:
+                        count += 1
+                print(count)
+            elif cmds[0] == "show":
+                command = args[0] + " " + cmds[1].strip(')').strip('"')
+                self.do_show(command)
+            elif cmds[0] == "destroy":
+                command = args[0] + " " + cmds[1].strip(')').strip('"')
+                self.do_destroy(command)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
