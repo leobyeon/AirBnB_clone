@@ -63,3 +63,5 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """test to_dict"""
         pass
+if __name__ == '__main__':
+    unittest.main()
