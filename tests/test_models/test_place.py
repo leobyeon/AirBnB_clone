@@ -18,7 +18,7 @@ class TestPlace(unittest.TestCase):
         self.my_model1.name = "MySelf"
         self.my_model1.description = "Big"
         self.my_model1.number_rooms = 2
-        self.my_model1.number_bathroomsrooms = 2
+        self.my_model1.number_bathrooms = 2
         self.my_model1.max_guest = 2
         self.my_model1.price_by_night = 200
         self.my_model1.latitude = 9.9
@@ -40,5 +40,5 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.my_model1.max_guest, 2)
         self.assertEqual(self.my_model1.price_by_night, 200)
         self.assertEqual(self.my_model1.latitude, 9.9)
-        self.assertEqual(self.my_model1.logitude, 9.9)
+        self.assertEqual(self.my_model1.longitude, 9.9)
         self.assertEqual(self.my_model1.amenity_ids, ["view"])

@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from unittest.mock import create_autospec
 import sys, os, pep8
 from console import HBNBCommand
+from models import storage
 import tests
 
 class TestBaseModel(unittest.TestCase):
@@ -32,9 +33,9 @@ class TestBaseModel(unittest.TestCase):
 
     def tearDown(self):
         """tear down test set up"""
-        #all_ob = storage.all()
-        #all_ob.clear()
-        #storage.save()
+        self.all_ob = storage.all()
+        self.all_ob.clear()
+        storage.save()
 
     def test_init(self):
         """test __init__"""
@@ -45,8 +46,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_quit(self):
         cli = self.create()
-        self.assertIsNone(cli.onecmd("quit"))
-        self.assertIsNone(cli.onecmd("EOF"))
+        self.assertTrue(cli.onecmd("quit"))
+        self.assertTrue(cli.onecmd("EOF"))
 
     def test_str(self):
         """test __srt__"""
