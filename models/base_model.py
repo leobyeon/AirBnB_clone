@@ -49,11 +49,8 @@ class BaseModel:
         created_at and updated_at must be converted to t(str) object
         in ISO format - first piece of the serialization/deserialization
         process: create a t(dict) representation of BaseModel"""
-        d = self.__dict__
-        g = {}
+        d = self.__dict__.copy()
         d["__class__"] = self.__class__.__name__
-        for k, v in d.items():
-            g[k] = v
-            if k == "created_at" or k == "updated_at":
-                g[k] = v.isoformat()
-        return (g)
+        d["created_at"] = self.created_at.isoformat()
+        d["updated_at"] = self.updated_at.isoformat()
+        return d
