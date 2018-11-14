@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """console.py - entry point of the command interpreter"""
 import cmd
+import shlex
 from models.base_model import BaseModel
 from models import storage
 from datetime import datetime
@@ -37,7 +38,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """Creates a new instance of BaseModel, saves it (to the JSON file)"""
+        """
+        Creates a new instance of BaseModel,
+        saves it (to the JSON file)
+        """
         if self.classes[args]:
             ob = self.classes[args]()
             print("{}".format(getattr(ob, 'id')))
@@ -48,9 +52,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the
-        class name and id"""
-        args = arg.split()
+        """
+        Prints the string representation of an instance based on the
+        class name and id
+        """
+        args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -66,9 +72,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id (save the
-        change into the JSON file)"""
-        args = arg.split()
+        """
+        Deletes an instance based on the class name and id (save the
+        change into the JSON file)
+        """
+        args = shlex.split(arg)
 
         if len(args) == 0:
             print("** class name missing **")
@@ -86,11 +94,13 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, arg):
-        """func do_all - arg - Prints all string representation of all
-         instances based or not on the class name"""
+        """
+        func do_all - arg - Prints all string representation of all
+        instances based or not on the class name
+        """
         a = storage.all()
         a_list = []
-        if not arg:       
+        if not arg:
             for v in a.values():
                 a_list.append(str(v))
             print(a_list)
@@ -103,12 +113,13 @@ class HBNBCommand(cmd.Cmd):
                 print(a_list)
             else:
                 print("** class doesn't exist **")
-            
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id by adding or
-         updating attribute"""
-        args = arg.split()
+        """
+        Updates an instance based on the class name and id by adding or
+        updating attribute
+        """
+        args = shlex.split(arg)
         if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in self.classes:
@@ -126,7 +137,8 @@ class HBNBCommand(cmd.Cmd):
                 if k in ob:
                     obj = ob.get(k)
                     try:
-                        setattr(obj, args[2], type(getattr(obj, args[2]))(args[3]))
+                        setattr(obj, args[2], type(getattr(
+                            obj, args[2]))(args[3]))
                         storage.save()
                     except AttributeError:
                         setattr(obj, args[2], args[3])
