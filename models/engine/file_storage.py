@@ -30,7 +30,7 @@ class FileStorage:
 
     def all(self):
         """func all - no args - returns the dictionary __objects"""
-        return self.__objects
+        return type(self).__objects
 
     def new(self, obj):
         """func new - obj - sets in __objects the obj with key
