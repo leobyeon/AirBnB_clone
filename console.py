@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         elif len(args) == 2:
-            k = "BaseModel" + "." + args[1]
+            k = args[0] + "." + args[1]
             ob = storage.all()
             if ob.get(k):
                 del ob[k]
