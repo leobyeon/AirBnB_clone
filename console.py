@@ -140,12 +140,11 @@ class HBNBCommand(cmd.Cmd):
                 if k in ob:
                     obj = ob.get(k)
                     try:
-                        setattr(obj, args[2], type(getattr(
-                            obj, args[2]))(args[3]))
-                        storage.save()
-                    except AttributeError:
+                        attr = getattr(obj, args[2])
+                        setattr(obj, args[2], type(attr)(args[3]))
+                    except:
                         setattr(obj, args[2], args[3])
-                        storage.save()
+                    storage.save()
                 else:
                     print("** no instance found **")
 
