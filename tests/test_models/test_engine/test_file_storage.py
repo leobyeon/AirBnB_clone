@@ -6,7 +6,7 @@ from unittest.mock import create_autospec
 import sys, os, pep8
 from console import HBNBCommand
 from models import storage
-import tests
+
 
 class TestBaseModel(unittest.TestCase):
     """Tests for class BaseModel"""
@@ -40,6 +40,9 @@ class TestBaseModel(unittest.TestCase):
     def test_init(self):
         """test __init__"""
         self.assertEqual(type(self.my_model1.name), str)
-        self.assertEqual(self.my_model1.name, "hell")
+        self.assertEqual(self.my_model1.name, "hello")
         self.assertEqual(type(self.my_model1.number), int)
         self.assertEqual(self.my_model1.number, 9)
+
+if __name__ == '__main__':
+    unittest.main()
