@@ -8,7 +8,7 @@ import sys
 import os
 import pep8
 from console import HBNBCommand
-import tests
+
 
 
 class TestCity(unittest.TestCase):
@@ -28,3 +28,6 @@ class TestCity(unittest.TestCase):
         """test for review"""
         self.assertEqual(self.my_model1.name, "hello")
         self.assertEqual(self.my_model1.state_id, "Ca")
+
+if __name__ == '__main__':
+    unittest.main()

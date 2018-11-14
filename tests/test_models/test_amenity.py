@@ -8,7 +8,6 @@ import os
 import pep8
 from unittest.mock import create_autospec
 from console import HBNBCommand
-import tests
 
 
 class TestAmenity(unittest.TestCase):
@@ -27,3 +26,6 @@ class TestAmenity(unittest.TestCase):
     def test_amenity(self):
         """test for review"""
         self.assertEqual(self.my_model1.name, "hello")
+
+if __name__ == '__main__':
+    unittest.main()

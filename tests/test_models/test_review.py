@@ -8,7 +8,6 @@ import sys
 import os
 import pep8
 from console import HBNBCommand
-import tests
 
 
 class TestReview(unittest.TestCase):
@@ -30,3 +29,6 @@ class TestReview(unittest.TestCase):
         self.assertEqual(self.my_model1.place_id, "Ca")
         self.assertEqual(self.my_model1.user_id, "Me")
         self.assertEqual(self.my_model1.text, "Hello you")
+
+if __name__ == '__main__':
+    unittest.main()
