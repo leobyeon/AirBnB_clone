@@ -3,7 +3,9 @@
 import unittest
 from models.engine.file_storage import FileStorage
 from unittest.mock import create_autospec
-import sys, os, pep8
+import sys
+import os
+import pep8
 from console import HBNBCommand
 from models import storage
 
@@ -28,8 +30,8 @@ class TestBaseModel(unittest.TestCase):
         """:return: last 'n' output lines"""
         if nr is None:
             return self.mock_stdout.write.call_args[0][0]
-        return "".join(map(lambda c: c[0][0],
-             self.mock_stdout.write.call_args_list[-nr:]))
+        return "".join(map(
+            lambda c: c[0][0], self.mock_stdout.write.call_args_list[-nr:]))
 
     def tearDown(self):
         """tear down test set up"""
