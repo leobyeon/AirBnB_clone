@@ -8,7 +8,6 @@ import sys
 import os
 import pep8
 from console import HBNBCommand
-import tests
 
 
 class TestPlace(unittest.TestCase):
@@ -46,3 +45,6 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.my_model1.latitude, 9.9)
         self.assertEqual(self.my_model1.longitude, 9.9)
         self.assertEqual(self.my_model1.amenity_ids, ["view"])
+
+if __name__ == '__main__':
+    unittest.main()
