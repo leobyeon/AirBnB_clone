@@ -8,6 +8,23 @@ import sys
 import os
 import pep8
 from console import HBNBCommand
+from models import storage
+
+
+def setUpModule():
+    ob = storage.all()
+    ob.clear()
+    storage.save()
+    if os.path.isfile('file.json'):
+        os.remove('file.json')
+
+
+def tearDownModule():
+    ob = storage.all()
+    ob.clear()
+    storage.save()
+    if os.path.isfile('file.json'):
+        os.remove('file.json')
 
 
 class TestPlace(unittest.TestCase):
@@ -45,6 +62,17 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(self.my_model1.latitude, 9.9)
         self.assertEqual(self.my_model1.longitude, 9.9)
         self.assertEqual(self.my_model1.amenity_ids, ["view"])
+        self.assertEqual(type(self.my_model1.amenity_ids), list)
+        self.assertEqual(type(self.my_model1.city_id), str)
+        self.assertEqual(type(self.my_model1.user_id), str)
+        self.assertEqual(type(self.my_model1.name), str)
+        self.assertEqual(type(self.my_model1.description), str)
+        self.assertEqual(type(self.my_model1.number_rooms), int)
+        self.assertEqual(type(self.my_model1.number_bathrooms), int)
+        self.assertEqual(type(self.my_model1.max_guest), int)
+        self.assertEqual(type(self.my_model1.price_by_night), int)
+        self.assertEqual(type(self.my_model1.latitude), float)
+        self.assertEqual(type(self.my_model1.longitude), float)
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,6 +8,23 @@ import sys
 import os
 import pep8
 from console import HBNBCommand
+from models import storage
+
+
+def setUpModule():
+    ob = storage.all()
+    ob.clear()
+    storage.save()
+    if os.path.isfile('file.json'):
+        os.remove('file.json')
+
+
+def tearDownModule():
+    ob = storage.all()
+    ob.clear()
+    storage.save()
+    if os.path.isfile('file.json'):
+        os.remove('file.json')
 
 
 class TestReview(unittest.TestCase):
@@ -29,6 +46,9 @@ class TestReview(unittest.TestCase):
         self.assertEqual(self.my_model1.place_id, "Ca")
         self.assertEqual(self.my_model1.user_id, "Me")
         self.assertEqual(self.my_model1.text, "Hello you")
+        self.assertEqual(type(self.my_model1.text), str)
+        self.assertEqual(type(self.my_model1.user_id), str)
+        self.assertEqual(type(self.my_model1.place_id), str)
 
 if __name__ == '__main__':
     unittest.main()
