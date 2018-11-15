@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
                         a_list.append(str(v))
             else:
                 print("** class doesn't exist **")
-        else: 
+        else:
             for v in a.values():
                 a_list.append(str(v))
 
@@ -167,11 +167,18 @@ class HBNBCommand(cmd.Cmd):
                         count += 1
                 print(count)
             elif cmds[0] == "show":
-                command = args[0] + " " + cmds[1].strip(')').strip('"')
+                command = args[0] + " " + cmds[1].strip(")").strip('"')
                 self.do_show(command)
             elif cmds[0] == "destroy":
-                command = args[0] + " " + cmds[1].strip(')').strip('"')
+                command = args[0] + " " + cmds[1].strip(")").strip('"')
                 self.do_destroy(command)
+            elif cmds[0] == "update":
+                subcmds = cmds[1].strip(")").split(",")
+                if len(subcmds) == 3:
+                    command = args[0] + " " + subcmds[
+                            0] + " " + subcmds[1] + " " + subcmds[2]
+                    print(command)
+                    self.do_update(command)
 
 
 if __name__ == '__main__':
