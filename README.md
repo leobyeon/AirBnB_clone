@@ -1,7 +1,7 @@
-# AirBnB_clone
+# AirBnB clone
 ---
 
-![](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJIMMWEC6CH2PXSCQ%2F20181114%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20181114T223110Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=f3d410d7052445a3d5c69225e5ce2d169b2c13250bc9dc95f730dca122267f9e)
+![HBnB](https://drive.google.com/file/d/1dMndeN33xLLquey2W_jHL6EMEXo5i6-Y/view)
 
 ## Description
 
