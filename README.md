@@ -1,7 +1,7 @@
 # AirBnB clone
 ---
 
-![HBnB](https://drive.google.com/file/d/1dMndeN33xLLquey2W_jHL6EMEXo5i6-Y/view)
+![HBnB](https://i.imgur.com/ETx1Gtf.png)
 
 ## Description
 
@@ -16,8 +16,7 @@ This project will consist of six parts:
 
 This repo contains the first part: the console. The console is the storage system that will hold all the future objects that we will implement in the later parts of the project.
 
-![](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJIMMWEC6CH2PXSCQ%2F20181115%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20181115T012613Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=f0e5bec5a9989bfc7da9a5c665353d0dd1a049d4a50517624885b9d11ea1df7d)
-
+![the diagram](https://i.imgur.com/buXwT8d.png)
 ---
 ## Files
 ---
