@@ -49,5 +49,5 @@ tests/test_models | Contains unittest files
 tests/test_models/test_engine | Contains unittest file for the engine
 
 ## Authors
-Damon Nyhan  
-Leo Byeon
+Damon Nyhan !(https://twitter.com/anovacap)  
+Leo Byeon !(https://twitter.com/byeon_cat)
